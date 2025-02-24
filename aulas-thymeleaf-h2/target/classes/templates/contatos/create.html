@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+   <div class="container">
+		<h3 class="text-center">Novo Contato</h3>
+		<form th:action="@{/contatos/save}" th:object="${contato}"
+			method="post">
+		 <label>Informe nome</label>
+			<input type="text" th:field="*{nome}" placeholder="Informe nome"
+				class="form-control mb-3" /> <label>Informe email</label> <input
+				type="email" th:field="*{email}" placeholder="Informe email"
+				class="form-control mb-3" /> <label>Informe fone</label> <input
+				type="tel" th:field="*{telefone}" placeholder="Informe telefone"
+				class="form-control mb-3" />
+
+			<div class=m-2>
+				<input type="submit" value="Salvar" class="btn btn-primary" /> 
+				<a th:href="@{/contatos/index}" class="btn btn-secondary">Cancelar</a>
+			</div>
+		</form>
+		<div th:if="${erro}" class="alert alert-danger" th:text="${erro}"></div>
+	</div>
+</body>
+</html>
